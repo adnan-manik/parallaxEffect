@@ -3,19 +3,28 @@ const ctx = canvas.getContext('2d');
 const CANVAS_WIDTH = canvas.width = 800;
 const CANVAS_HEIGHT = canvas.height = 700;
 const layerWidth = 2400;
-const SPEED = 10;
+const currentSpeed = document.getElementById('animSpeed');
+const speedRange = document.getElementById('animRange');
 
+let SPEED = speedRange.value;
+
+speedRange.addEventListener('change',(e)=>{
+    currentSpeed.innerHTML = e.target.value;
+    SPEED = e.target.value;
+})
 
 class layers {
     
-    constructor(image,layerName, speed ) {
+    constructor(image,layerName, speedModifier ) {
         this.x=0;
         this.name = layerName;
         this.image = image;
-        this.speed = SPEED * speed;
-        console.log(`speed of ${this.name} is: ${this.speed}`);
+        this.speedModifier = speedModifier;
+        this.speed = SPEED * speedModifier;
     }
     draw() {
+        
+        this.speed =   SPEED * this.speedModifier;
         if (this.x <= -2400) { this.x = 0; }
 
         ctx.drawImage(this.image, this.x, 0);

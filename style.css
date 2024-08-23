@@ -1,5 +1,6 @@
 body{
     background-color: black;
+    font-family: sans-serif;
 }
 #canvas1{
     width: 800px;
@@ -7,6 +8,20 @@ body{
     border: 3px solid white;
 }
 
+.control{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.control span, p{
+    font-size: 24px;
+    color: white;
+}
+
+.control input{
+    width: 60%;
+}
 .container{
     width: 850px;
     height: 750px;
